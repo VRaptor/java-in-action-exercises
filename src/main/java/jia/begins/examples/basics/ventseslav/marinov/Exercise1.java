@@ -21,15 +21,14 @@ public class Exercise1 {
 		System.out.println("-----------------------------------------------");
 
 		Scanner in = new Scanner(System.in);
-		
+
 		File file = new File("employees.txt");
-		
+
 		if (!file.exists()) {
 			file.createNewFile();
 		}
-		
-		PrintWriter pw = new PrintWriter(new FileWriter(file, true));
 
+		PrintWriter pw = new PrintWriter(new FileWriter(file, true));
 
 		System.out.print("Name: ");
 		String name = in.nextLine();
@@ -52,7 +51,7 @@ public class Exercise1 {
 				isInputOk = false;
 			}
 		} while (!isInputOk);
-		
+
 		do {
 
 			try {
@@ -65,9 +64,12 @@ public class Exercise1 {
 			}
 		} while (!isInputOk);
 
-		pw.write(String.format("\nName: " + name + "\tLastName: " + lastName
-				+ "\tPosition: " + position + "\tAge: " + age + "\tSalary: "
-				+ salary));
+		pw.write(String.format("%10s %10s %10s %5d %15f %n", name, lastName,
+				position, age, salary));
+
+		// pw.write(String.format("\nName: " + name + "\tLastName: " + lastName
+		// + "\tPosition: " + position + "\tAge: " + age + "\tSalary: " +
+		// salary));
 
 		pw.flush();
 		pw.close();
