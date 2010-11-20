@@ -9,69 +9,69 @@ import java.util.Scanner;
 
 public class Exercise1 {
 
-	public static int age;
-	public static double salary;
+public static int age;
+public static double salary;
 
-	public static void main(String[] args) throws IOException,
-			FileNotFoundException {
+public static void main(String[] args) throws IOException,
+FileNotFoundException {
 
-		boolean isInputOk = false;
+boolean isInputOk = false;
 
-		System.out.println("JACME Inc.");
-		System.out.println("-----------------------------------------------");
+System.out.println("JACME Inc.");
+System.out.println("-----------------------------------------------");
 
-		Scanner in = new Scanner(System.in);
-		
-		File file = new File("employees.txt");
-		
-		if (!file.exists()) {
-			file.createNewFile();
-		}
-		
-		PrintWriter pw = new PrintWriter(new FileWriter(file, true));
+Scanner in = new Scanner(System.in);
+
+File file = new File("employees.txt");
+
+if (!file.exists()) {
+file.createNewFile();
+}
+
+PrintWriter pw = new PrintWriter(new FileWriter(file, true));
 
 
-		System.out.print("Name: ");
-		String name = in.nextLine();
+System.out.print("Name: ");
+String name = in.nextLine();
 
-		System.out.print("Last Name: ");
-		String lastName = in.nextLine();
+System.out.print("Last Name: ");
+String lastName = in.nextLine();
 
-		System.out.print("Position: ");
-		String position = in.nextLine();
+System.out.print("Position: ");
+String position = in.nextLine();
 
-		do {
+do {
 
-			try {
+try {
 
-				System.out.print("Age: ");
-				age = Integer.parseInt(in.nextLine());
-				isInputOk = true;
-			} catch (NumberFormatException e) {
-				System.out.println("Error: Must be a number! ");
-				isInputOk = false;
-			}
-		} while (!isInputOk);
-		
-		do {
+System.out.print("Age: ");
+age = Integer.parseInt(in.nextLine());
+isInputOk = true;
+} catch (NumberFormatException e) {
+System.out.println("Error: Must be a number! ");
+isInputOk = false;
+}
+} while (!isInputOk);
 
-			try {
-				System.out.print("Salary: ");
-				salary = Double.parseDouble(in.nextLine());
-				isInputOk = true;
-			} catch (NumberFormatException e) {
-				System.out.println("Error: Must be a number! ");
-				isInputOk = false;
-			}
-		} while (!isInputOk);
+do {
 
-		pw.write(String.format("\nName: " + name + "\tLastName: " + lastName
-				+ "\tPosition: " + position + "\tAge: " + age + "\tSalary: "
-				+ salary));
+try {
+System.out.print("Salary: ");
+salary = Double.parseDouble(in.nextLine());
+isInputOk = true;
+} catch (NumberFormatException e) {
+System.out.println("Error: Must be a number! ");
+isInputOk = false;
+}
+} while (!isInputOk);
 
-		pw.flush();
-		pw.close();
+pw.write(String.format("%10s %10s %10s %5d %15f %n", name, lastName, position, age, salary));
 
-	}
+//pw.write(String.format("\nName: " + name + "\tLastName: " + lastName + "\tPosition: " + position + "\tAge: " + age + "\tSalary: " + salary));
+
+pw.flush();
+pw.close();
+
+}
 
 }
